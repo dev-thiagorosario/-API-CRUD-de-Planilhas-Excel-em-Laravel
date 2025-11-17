@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class UserExportController extends Controller
 {
-    public function export()
+    public function __invoke()
     {
         return Excel::download(new UsersExport, 'users.xlsx');
     }

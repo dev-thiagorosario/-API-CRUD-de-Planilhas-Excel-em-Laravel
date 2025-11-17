@@ -17,7 +17,8 @@ services:
       - "8080:80" # http://localhost:8080
     volumes:
       - ./:/var/www/html
-      - ./nginx:/etc/nginx/conf.d
+      # Monta o arquivo de configuração único como default.conf dentro do container
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - app
     networks:

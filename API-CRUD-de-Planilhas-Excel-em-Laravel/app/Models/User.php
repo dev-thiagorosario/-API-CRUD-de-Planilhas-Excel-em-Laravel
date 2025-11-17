@@ -15,12 +15,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'password_confirmation',
     ];
 
     protected $hidden = [
         'password',
-        'password_confirmation',
         'remember_token',
     ];
 
