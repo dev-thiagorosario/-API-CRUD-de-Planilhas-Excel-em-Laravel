@@ -13,4 +13,4 @@ Route::prefix('auth')->group(function (){
 });
 
 
-Route::get('/users/export', UserExportController::class);
+Route::get('export/users', UserExportController::class);
