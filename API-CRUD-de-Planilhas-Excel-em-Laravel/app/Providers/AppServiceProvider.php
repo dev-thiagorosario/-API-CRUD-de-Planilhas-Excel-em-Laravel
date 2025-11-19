@@ -7,10 +7,10 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\CreateUserRepository;
 use App\Usecases\CreateUserUsecase;
 use App\Usecases\CreateUserUsecaseInterface;
-use App\Repositories\LoginUserRepositoryInterface;
-use App\Repositories\LoginUserRepository;
-use App\Usecases\LoginUserUsecaseInterface;
-use App\Usecases\LoginUserUsecase;
+use App\Repositories\LoginRepositoryInterface;
+use App\Repositories\LoginRepository;
+use App\Usecases\LoginUsecaseInterface;
+use App\Usecases\LoginUsecase;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -31,13 +31,13 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            LoginUserUsecaseInterface::class,
-            LoginUserUsecase::class
+            LoginUsecaseInterface::class,
+            LoginUsecase::class
         );
 
         $this->app->bind(
-            LoginUserRepositoryInterface::class,
-            LoginUserRepository::class
+            LoginRepositoryInterface::class,
+            LoginRepository::class
         );
     }
 

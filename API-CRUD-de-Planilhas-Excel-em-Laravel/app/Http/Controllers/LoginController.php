@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginUserRequest;
-use App\Usecases\LoginUserUsecaseInterface;
-use App\Exceptions\LoginOrPasswordInvalidException;
+use App\Exceptions\Login\LoginOrPasswordInvalidException;
+use App\Http\Requests\LoginRequest;
+use App\Usecases\LoginUsecaseInterface;
 use Illuminate\Http\JsonResponse;
 
-class LoginUserController extends Controller
+class LoginController extends Controller
 {
     public function __construct(
-        private readonly LoginUserUsecaseInterface $usecase
+        private readonly LoginUsecaseInterface $usecase
     ) {
     }
 
-    public function __invoke(LoginUserRequest $request): JsonResponse
+    public function __invoke(LoginRequest $request): JsonResponse
     {
         try {
             $usecase = $this->usecase;

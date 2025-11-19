@@ -7,7 +7,7 @@ namespace App\Repositories;
 use App\Models\User;
 use Illuminate\Support\Str;
 
-class LoginUserRepository implements LoginUserRepositoryInterface
+class LoginRepository implements LoginRepositoryInterface
 {
     protected ?User $user = null;
 

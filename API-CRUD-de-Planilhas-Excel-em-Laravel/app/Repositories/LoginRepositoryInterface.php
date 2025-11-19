@@ -6,7 +6,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 
-interface LoginUserRepositoryInterface
+interface LoginRepositoryInterface
 {
     public function userByEmail(string $email): ?User;
 

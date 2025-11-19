@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Usecases;
 
-use App\Exceptions\LoginOrPasswordInvalidException;
+use App\Exceptions\Login\LoginOrPasswordInvalidException;
 use App\Models\User;
-use App\Repositories\LoginUserRepositoryInterface;
+use App\Repositories\LoginRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
 use Modules\Identity\Exceptions\UserNotFoundException;
 
-class LoginUserUsecase implements LoginUserUsecaseInterface
+class LoginUsecase implements LoginUsecaseInterface
 {
     public function __construct(
-        private readonly LoginUserRepositoryInterface $loginUserRepository,
+        private readonly LoginRepositoryInterface $loginUserRepository,
     ) {
     }
 
@@ -28,7 +28,7 @@ class LoginUserUsecase implements LoginUserUsecaseInterface
 
             $accessToken = $this->loginUserRepository->createAccessToken($user, $password);
 
-            $tokenTtlSeconds = 3600; 
+            $tokenTtlSeconds = 3600;
             return new LoginResult(
                 token: $accessToken,
                 expiresIn: $tokenTtlSeconds,
