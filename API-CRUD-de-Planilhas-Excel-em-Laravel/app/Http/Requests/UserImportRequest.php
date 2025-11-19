@@ -11,7 +11,7 @@ class UserImportRequest extends FormRequest
         return [
             'file' => [
                 'required',
-                'mimes:xlsx,xls',
+                'mimes:xlsx,xls,csv',
                 'max:5120',
             ],
 

@@ -9,7 +9,11 @@ class AgendaImportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+            'file' => [
+                'required',
+                'mimes:xlsx, xls, csv',
+                'max:5120',
+            ]
         ];
     }
 

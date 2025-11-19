@@ -40,6 +40,12 @@ class AgendaImportController extends Controller
                 'message' => 'Erro ao importar arquivo de agenda.',
                 'details' => $e->getMessage(),
             ], 400);
+        } catch (\Throwable $e) {    
+            return response()->json(
+                data: [
+                    'message' => 'Error Interno ao importar agenda'
+                ], status: 500
+            );
         }
     }
 }

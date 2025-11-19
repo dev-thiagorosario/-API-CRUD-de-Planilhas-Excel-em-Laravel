@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Usecases;
 
+use App\DTO\UserImportResultDTO;
 use App\Exceptions\Import\EmptyFileException;
 use App\Exceptions\Import\InvalidFileExtensionException;
 use App\Exceptions\Import\MissingHeadersException;
@@ -28,7 +29,7 @@ class UserImportUsecase implements UserImportUsecaseInterface
         private readonly UserImportRepositoryInterface $userImportRepository
     ) {}
 
-    public function handle(UploadedFile $file): array
+    public function handle(UploadedFile $file): UserImportResultDTO
     {
         $this->validatedExtension($file);
 
@@ -58,10 +59,11 @@ class UserImportUsecase implements UserImportUsecaseInterface
             }
         }
 
-        return [
-            'imported' => $imported,
-            'errors'   => $errors,
-        ];
+        return new UserImportResultDTO(
+            totalRows: $totalRows,
+            imported: $imported,
+            errors: $errors,
+        );
     }
 
     private function validatedExtension(UploadedFile $file): void
